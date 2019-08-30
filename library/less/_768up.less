@@ -1,0 +1,572 @@
+@import "_mixins.less";
+@import "_grid.less";
+
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	max-width: 1140px;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+
+.tcc {
+	.header{
+		padding-top:0;
+		
+		#header-left {
+			.sixcol;
+			.first;
+		}
+		
+		#header-right{
+			.sixcol;
+			clear:none;
+		}
+		
+		#contact {
+			.sixcol;
+			.first;
+			.text-center;
+			max-height:150px;
+			padding:43px 0px;
+			margin-bottom:.7em;
+		}
+		a#learn-more {
+			.sixcol;
+			padding:31px 15px;
+			margin-bottom:.6em;
+			margin-top:0px;
+			height: auto;
+			max-height:none;
+			font-size:1em;
+			
+			hr {
+				display:block; 
+			}
+		}
+			
+		a#learn-more:first-line {display:block;}
+		
+		nav:after {
+			background:url('../images/shadow-6col.png') bottom center no-repeat;
+		}
+
+	}
+	
+	#content {
+		.sidebar-nav{
+			background: @darker-orange;
+		}
+			.sidebar-nav:before {
+				background:url('../images/fold-over-orange.png') bottom center no-repeat;
+			}
+	}
+
+}
+.header {
+
+	#header-left {
+		.eightcol; 
+		.first;
+	}
+	#header-left:after {
+		background:url('../images/shadow-6col.png') bottom center no-repeat;
+	}		  
+	#contact {
+		float: right;
+		clear:none;
+		text-align: right;
+		padding-top:20px;
+		font-size: .75em;
+		line-height: 1.25em;
+	}
+
+	h1#logo {
+		.eightcol;
+		.first;
+	}
+	
+	a#learn-more {
+		.fourcol;
+		.last;
+		margin-top:0px;
+		height: auto;
+		max-height:none;
+		padding:20px 15px 20px;
+		font-size:1em;
+	}	
+	nav:after {
+		background:url('../images/shadow-full.png') bottom center no-repeat;
+	}
+}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+nav, .nav {
+	border: 0;
+	ul {
+		margin-top:0;
+		.clearfix;
+	}
+	li {
+		float: left;
+		position: relative;
+
+		a {
+			border-bottom: 0;
+			text-align:left;
+
+			/*
+			you can use hover styles here even though this size
+			has the possibility of being a mobile device.
+			*/
+			&:hover, &:focus {
+				background-color: #dedede;
+			}
+		}
+
+		&:first-child {}
+		&:last-child {}
+
+		/*
+		plan your menus and drop-downs wisely.
+		*/
+		ul.sub-menu,
+		ul.children {
+			margin-top: 0;
+			border: 1px solid #ccc;
+			border-top: 0;
+			position: absolute;
+			overflow: hidden;
+			visibility: hidden;
+			z-index: 8999;
+
+			li {
+
+				a {
+					padding-left: 10px;
+					border-right: 0;
+					display: block;
+					width: 200px;
+					border-bottom: 1px solid #ccc;
+					background: @white-bg;
+
+					&:hover,
+					&:focus {
+						background-color: #dedede;
+					}
+
+					&:link {}
+				}
+
+				&:first-child {}
+
+				&:last-child {
+
+					a {
+						border-bottom: 0;
+					}
+				}
+
+				/*
+				if you need to go deeper, go nuts
+				just remember deeper menus suck
+				for usability. k, bai.
+				*/
+				ul {}
+			}
+
+			/* highlight sub-menu current page */
+			li.current-menu-item,
+			li.current_page_item,
+			li.current_page_ancestor {
+				a {}
+			}
+		}
+
+		/* showing sub-menus */
+		&:hover ul {
+			top: auto;
+			overflow: visible;
+			visibility:visible;
+		}
+
+	} /* end .menu ul li */
+
+	/* highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current_page_ancestor {
+		a {}
+	}  /* end current highlighters */
+
+} /* end .nav */
+
+
+/*********************
+CONTENT STYLES
+*********************/
+.home-module {
+	background:@white-bg;
+	.fourcol;
+	max-height:250px;
+	height:250px;
+}
+.home-module:after {
+	background:url('../images/shadow-4col.png') bottom center no-repeat;
+}
+	.home-module.first {.first;}
+	.home-module.last {.last;}
+	
+	#content {
+		.main, .small-column, .large-column {
+			background:@white-bg;
+			padding:.6em 1em 1.25em;
+			margin-bottom:1em;
+			position:relative;
+		}
+		.main:after {
+			content: '';
+			display:block;
+			background:url('../images/shadow-full.png') bottom center no-repeat;
+			position:absolute; 
+			bottom:-7px;
+			left:0px; right:0px;
+			height:7px;
+			width:100%;
+			max-width: 99.999999993%;
+		}
+			
+		.small-column {
+			.threecol;
+			.first; 
+			
+			img {
+				margin: 0 0 1.5em 0;
+				float:none;
+			}	
+		}
+		.small-column-right {
+			.threecol;
+			
+			img {
+				margin: 0 0 1.5em 0;
+				float:none;
+			}	
+		}
+		.large-column {
+			.ninecol;
+		}
+		.large-column-left {
+			.ninecol;
+			.first;
+		}
+		
+		.small-column:after, .small-column-right:after, .threecol:after {
+			content: '';
+			display:block;
+			background:url('../images/shadow-3col.png') bottom center no-repeat;
+			position:absolute; 
+			bottom:-7px;
+			left:0px; right:0px;
+			height:7px;
+			width:100%;
+			max-width: 100%;
+		}
+		
+		.large-column:after, .large-column-left:after, .ninecol:after {
+			content: '';
+			display:block;
+			background:url('../images/shadow-9col.png') bottom center no-repeat;
+			position:absolute; 
+			bottom:-7px;
+			left:0px;
+			height:7px;
+			width:100%;
+			max-width:100%;
+		}
+		
+		.wide-page {
+			.tencol;
+			.first;
+			padding-top:0;
+		}
+
+		.sidebar-nav{
+			position:absolute;
+			right:-1.6em;
+			top:2.5em;
+			left:auto;
+			padding:.6em 2em 1.25em 1em;
+			background: @blue;
+			color:@white;
+			width: 18%;
+			
+			header, section {display:block;}
+			a, h3 {color:@white;}
+			h3 {border-bottom:1px solid #fff;}
+			ul {margin-left: 1em;}
+			li {display: list-item; padding:0; float:none;}
+		}
+			.sidebar-nav:before {
+				content: '';
+				display:block;
+				background:url('../images/fold-over.png') bottom center no-repeat;
+				position:absolute; 
+				top:-9px;
+				height:9px;
+				right:0px;
+				width:25px;
+				max-width: 99.999999993%;
+			}
+			.sidebar-nav:after {
+				content: '';
+				display:block;
+				background:url('../images/shadow-2col.png') bottom center no-repeat;
+				position:absolute; 
+				bottom:-10px;
+				left:0; right:0px;
+				height:10px;
+				width:100%;
+				max-width: 99.999999993%;
+			}
+			
+		#testimonials .test-col{
+			.threecol;
+		}
+
+
+
+}
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+footer .sidebar {margin-top: 2.2em;}
+.sidebar {
+	font-size:@body-text-size;
+}
+#sidebar1.sidebar {
+	padding:0 10px !important;
+}
+
+	.widgettitle {
+		border-bottom: 2px solid #444;
+		margin-bottom: 0.75em;
+	}
+	
+	footer .widget {margin: 2.2em 0;}
+	.widget {
+		padding: 0 10px;
+		margin:1.25em 0;
+
+		ul {
+			li {
+				margin-bottom: 0.75em;
+
+				&:first-child {}
+				&:last-child {}
+				a {}
+				/* deep nesting */
+
+				ul {
+					margin-top: 0.75em;
+					padding-left: 1em;
+				}
+			}
+		}
+	}
+	
+
+
+	/* links widget */
+	.widget_links {}
+	.widget_links ul {}
+	.widget_links ul li {}
+	.widget_links ul li a {}
+
+	/* meta widget */
+	.widget_meta {}
+	.widget_meta ul {}
+	.widget_meta ul li {}
+	.widget_meta ul li a {}
+
+	/* pages widget */
+	.widget_pages {}
+	.widget_pages ul {}
+	.widget_pages ul li {}
+	.widget_pages ul li a {}
+
+	/* recent-posts widget */
+	.widget_recent_entries {}
+	.widget_recent_entries ul {}
+	.widget_recent_entries ul li {}
+	.widget_recent_entries ul li a {}
+
+	/* archives widget */
+	.widget_archive {}
+	.widget_archive ul {}
+	.widget_archive ul li {}
+	.widget_archive ul li a {}
+	.widget_archive select {}
+	.widget_archive option {}
+
+	/* tag-cloud widget */
+	.widget_links {}
+	.widget_links li:after {}
+	.widget_links li:before {}
+	.widget_tag_cloud {}
+	.widget_tag_cloud a {}
+	.widget_tag_cloud a:after {}
+	.widget_tag_cloud a:before {}
+
+	/* calendar widget */
+	.widget_calendar {}
+	#calendar_wrap {}
+	#calendar_wrap th {}
+	#calendar_wrap td {}
+	#wp-calendar tr td {}
+	#wp-calendar caption {}
+	#wp-calendar a {}
+	#wp-calendar #today {}
+	#wp-calendar #prev {}
+	#wp-calendar #next {}
+	#wp-calendar #next a {}
+	#wp-calendar #prev a {}
+
+	/* category widget */
+	.widget_categories {}
+	.widget_categories ul {}
+	.widget_categories ul li {}
+	.widget_categories ul ul.children {}
+	.widget_categories a {}
+	.widget_categories select{}
+	.widget_categories select#cat {}
+	.widget_categories select.postform {}
+	.widget_categories option {}
+	.widget_categories .level-0 {}
+	.widget_categories .level-1 {}
+	.widget_categories .level-2 {}
+	.widget_categories .level-3 {}
+
+	/* recent-comments widget */
+	.recentcomments {}
+	#recentcomments {}
+	#recentcomments li {}
+	#recentcomments li a {}
+	.widget_recent_comments {}
+
+	/* search widget */
+	#searchform {}
+	.widget_search {
+		.clearfix;
+		width:100%;
+		input[type='submit']{
+			line-height: normal;
+			padding-top: .4em;
+			display:block;
+			margin: .3em 0;
+		}
+	}
+	.screen-reader-text {}
+
+	/* text widget */
+	.textwidget {}
+	.widget_text {}
+	.textwidget p {}
+
+
+/*********************
+FOOTER STYLES
+*********************/
+.footer {
+	clear: both;
+	
+	.widget {
+		margin:.3em 0;
+		font-size: .625em;
+		line-height:1.75em;
+		border-right:1px solid #d0c8a4;
+		float:left; 
+		padding:0em 1em;
+		min-height:75px;
+		min-width:18%;
+		width:auto;
+		border-bottom:0;
+		.text-left;
+		
+		.widgettitle {border:0; font-size: 1.3em; margin:.5em 0;}
+				
+		iframe {border:1px solid #d0c8a4;}
+				
+		a#fb {display:block; background:url('../images/fb.jpg') no-repeat; height:57px; width:57px; display:block; margin:1em auto 0; text-indent:-9999px; position:relative; z-index:9999;}
+		a#fb:hover {background-position:0 -57px;}
+	}
+	#text-2, #text-5 {float:right; border-right:0px; min-width:0; padding-left:2em; border-left:1px solid #d0c8a4;}
+	
+	.widget_nav_menu {margin-top:0; max-width:none; width:28%; padding-right:0;}
+
+	ul#menu-footernav, ul#menu-tcc-footernav{
+		margin:0 auto;
+		.clearfix;
+		
+		li {
+			float:left;
+			padding:0 2% .2em;
+					
+			a {
+				width:90%;
+				text-decoration:none;
+				font-weight:bold;
+				color:@black;
+			}
+		}	
+	}
+}
+/*
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+*/
+.footer-links {
+	ul {
+		li {
+			a {
+				&:hover {}
+			}
+			/*
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/
+			ul {}
+		}
+	}
+} /* end .footer-links */
